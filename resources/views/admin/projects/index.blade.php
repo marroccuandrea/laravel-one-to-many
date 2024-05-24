@@ -45,7 +45,7 @@
 
                         </form>
                     </td>
-                    <td>{{ $project->type->title }}</td>
+                    <td>{{ $project->type?->title }}</td>
                     <td class="d-flex">
 
                         <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
