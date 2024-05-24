@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Tecnology;
+use App\Models\Type;
 use App\Functions\Helper as Help;
 
 class TecnologyTableSeeder extends Seeder
