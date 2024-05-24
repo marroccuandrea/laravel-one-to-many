@@ -1,0 +1,35 @@
+@import '~bootstrap/scss/bootstrap';
+
+header {
+    height: 75px;
+}
+
+.main-wrapper {
+    height: calc(100vh - 70px);
+}
+
+aside {
+    width: 200px;
+
+    ul {
+        list-style: none;
+
+
+        li {
+            line-height: 40px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
+
+input {
+    border: none;
+}
