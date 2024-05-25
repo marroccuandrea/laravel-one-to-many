@@ -20,11 +20,10 @@
         </div>
     @endif
 
-    {{-- <form class="d-flex" action="{{ route('admin.projects.store') }}" method="POST">
-        @csrf
-        <input class="form-control me-2" placeholder="Nuovo progetto" name="title"> //Trasformare in barra di ricerca
-        <button class="btn btn-success" type="submit">Aggiungi</button>
-    </form> --}}
+    <form class="d-flex" action="{{ route('admin.projects.index') }}" method="GET" role="search">
+        <input class="form-control me-2" placeholder="Cerca progetto" name="toSearch" type="search">
+        <button class="btn btn-primary" type="submit">Cerca</button>
+    </form>
     <table class="table">
         <thead>
             <tr>
