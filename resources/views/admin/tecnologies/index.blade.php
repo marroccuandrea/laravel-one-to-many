@@ -49,13 +49,13 @@
                         </form>
                     </td>
                     <td class="d-flex">
-                        <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
-                            type="submit">Modifica</button>
+                        <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning" type="submit"><i
+                                class="fa-solid fa-pen-to-square"></i></button>
                         <form action="{{ route('admin.tecnologies.destroy', $project) }}" method="POST"
                             onsubmit="return confirm('Sei sicuro di voler cancellare l\'elemento?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Elimina</button>
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
                     </td>
                 </tr>

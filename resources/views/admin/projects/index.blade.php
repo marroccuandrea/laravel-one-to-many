@@ -50,12 +50,13 @@
 
                         {{-- <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
                             type="submit">Modifica</button> --}}
-                        <a class="btn btn-warning me-2" href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
+                        <a class="btn btn-warning me-2" href="{{ route('admin.projects.edit', $project->id) }}"><i
+                                class="fa-solid fa-pen-to-square"></i></a>
                         <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
                             onsubmit="return confirm('Sei sicuro di voler cancellare l\'elemento?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Elimina</button>
+                            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
                     </td>
                 </tr>

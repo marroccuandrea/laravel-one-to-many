@@ -5,6 +5,6 @@
     <form class="d-flex my-5" action="{{ route('admin.projects.store') }}" method="POST">
         @csrf
         <input class="form-control me-2" placeholder="Nome progetto" name="title">
-        <button class="btn btn-success" type="submit">Aggiungi</button>
+        <button class="btn btn-primary" type="submit">Aggiungi</button>
     </form>
 @endsection
