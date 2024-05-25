@@ -20,11 +20,11 @@
         </div>
     @endif
 
-    <form class="d-flex" action="{{ route('admin.projects.store') }}" method="POST">
+    {{-- <form class="d-flex" action="{{ route('admin.projects.store') }}" method="POST">
         @csrf
-        <input class="form-control me-2" placeholder="Nuovo progetto" name="title">
+        <input class="form-control me-2" placeholder="Nuovo progetto" name="title"> //Trasformare in barra di ricerca
         <button class="btn btn-success" type="submit">Aggiungi</button>
-    </form>
+    </form> --}}
     <table class="table">
         <thead>
             <tr>
@@ -48,8 +48,9 @@
                     <td>{{ $project->type?->title }}</td>
                     <td class="d-flex">
 
-                        <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
-                            type="submit">Modifica</button>
+                        {{-- <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
+                            type="submit">Modifica</button> --}}
+                        <a class="btn btn-warning me-2" href="{{ route('admin.projects.edit', $project->id) }}">Modifica</a>
                         <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
                             onsubmit="return confirm('Sei sicuro di voler cancellare l\'elemento?')">
                             @csrf
@@ -61,10 +62,10 @@
             @endforeach
         </tbody>
     </table>
-    <script>
+    {{-- <script>
         function submitForm(id) {
             const form = document.getElementById(`form-edit-${id}`);
             form.submit();
         }
-    </script>
+    </script> --}}
 @endsection

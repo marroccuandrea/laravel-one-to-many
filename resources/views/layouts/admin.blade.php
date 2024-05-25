@@ -30,6 +30,10 @@
                         <a href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-diagram-project px-1 "></i>
                             Projects</a>
                     </li>
+                    <li>
+                        <a href="{{ route('admin.projects.create') }}"><i class="fa-solid fa-diagram-project px-1 "></i>
+                            New Project</a>
+                    </li>
                 </ul>
             </nav>
         </aside>
