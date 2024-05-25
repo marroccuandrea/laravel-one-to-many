@@ -19,12 +19,13 @@
             {{ session('success') }}
         </div>
     @endif
+    <form class="d-flex" action="{{ route('admin.types.store') }}" method="POST">
+        @csrf
+        <input class="form-control me-2" type="search" placeholder="Nuovo tipo" name="title">
+        <button class="btn btn-success" type="submit">Aggiungi</button>
+    </form>
     <table class="table">
-        <form class="d-flex" action="{{ route('admin.types.store') }}" method="POST">
-            @csrf
-            <input class="form-control me-2" type="search" placeholder="Nuovo tipo" name="title">
-            <button class="btn btn-success" type="submit">Aggiungi</button>
-        </form>
+
         <thead>
             <tr>
                 <th scope="col">Tipo</th>
