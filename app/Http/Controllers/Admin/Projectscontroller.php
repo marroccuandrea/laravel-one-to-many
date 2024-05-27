@@ -59,9 +59,11 @@ class Projectscontroller extends Controller
 
             ]
         );
-        if (array_key_exists('image', $exist)) {
-            $image_path = Storage::put('uploads', $exist['image']);
-            $exist['image'] = $image_path;
+        $data = $request->all();
+        if (array_key_exists('image', $data)) {
+            $image_path = Storage::put('uploads', $data['image']);
+
+            $data['image'] = $image_path;
         }
 
         $exist = Project::where('title', $request->title)->first();
@@ -71,7 +73,7 @@ class Projectscontroller extends Controller
             $new = new Project();
             $new->title = $request->title;
             $new->slug = Help::generateSlug($new->title, Project::class);
-            $new->image = $request['image'];
+            $new->image = $data['image'];
             $new->save();
             return redirect()->route('admin.projects.index')->with('success', 'Progetto creato correttamente');
         }

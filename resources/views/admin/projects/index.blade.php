@@ -31,6 +31,7 @@
                     <a href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'title']) }}">Progetti</a>
                 </th>
                 <th scope="col">Tipo</th>
+                <th scope="col">Immagine</th>
                 <th scope="col">Azioni</th>
             </tr>
         </thead>
@@ -47,6 +48,8 @@
                         </form>
                     </td>
                     <td>{{ $project->type?->title }}</td>
+                    <td><img class="image-fluid w-25" src="{{ asset('storage/' . $project->image) }}"
+                            alt="{{ $project->title }}"></td>
                     <td class="d-flex">
 
                         {{-- <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
@@ -64,7 +67,6 @@
             @endforeach
         </tbody>
     </table>
-    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
     {{-- <script>
         function submitForm(id) {
             const form = document.getElementById(`form-edit-${id}`);
