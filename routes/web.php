@@ -30,6 +30,9 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', Projectscontroller::class);
         Route::resource('tecnologies', Tecnologiescontroller::class);
         Route::resource('types', Typescontroller::class);
+        //Rotte custom
+        //Rotta per ordinare in base al nome del progetto
+        Route::get('orderby/{direction}/{column}', [Projectscontroller::class, 'orderby'])->name('orderby');
     });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

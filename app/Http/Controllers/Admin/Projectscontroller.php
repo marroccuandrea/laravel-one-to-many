@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Functions\Helper as Help;
+use Illuminate\Support\Facades\Storage;
 
 class Projectscontroller extends Controller
 {
@@ -19,7 +20,17 @@ class Projectscontroller extends Controller
         } else {
             $projects = Project::all();
         }
-        return view('admin.projects.index', compact('projects'));
+
+        $direction = 'desc';
+
+        return view('admin.projects.index', compact('projects', 'direction'));
+    }
+
+    public function orderby($direction, $column)
+    {
+        $direction = $direction === 'desc' ? 'asc' : 'desc';
+        $projects = Project::orderby($column, $direction)->get();
+        return view('admin.projects.index', compact('projects', 'direction'));
     }
 
     /**
@@ -35,6 +46,24 @@ class Projectscontroller extends Controller
      */
     public function store(Request $request)
     {
+        $exist = $request->validate(
+            [
+                'title' => 'required|min:3|max:255',
+                'image' => 'image'
+            ],
+            [
+                'title.required' => 'Il titolo è obbligatorio',
+                'title.max' => 'Il titolo non può superare i :max caratteri',
+                'title.min' => 'Il titolo deve avere almeno :min caratteri',
+                'image.image' => 'Il file caricato deve essere una immagine'
+
+            ]
+        );
+        if (array_key_exists('image', $exist)) {
+            $image_path = Storage::put('uploads', $exist['image']);
+            $exist['image'] = $image_path;
+        }
+
         $exist = Project::where('title', $request->title)->first();
         if ($exist) {
             return redirect()->route('admin.projects.index')->with('error', 'Progetto già esistente');
@@ -42,6 +71,7 @@ class Projectscontroller extends Controller
             $new = new Project();
             $new->title = $request->title;
             $new->slug = Help::generateSlug($new->title, Project::class);
+            $new->image = $request['image'];
             $new->save();
             return redirect()->route('admin.projects.index')->with('success', 'Progetto creato correttamente');
         }

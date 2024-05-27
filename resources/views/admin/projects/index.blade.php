@@ -27,7 +27,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Progetti</th>
+                <th scope="col">
+                    <a href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'title']) }}">Progetti</a>
+                </th>
                 <th scope="col">Tipo</th>
                 <th scope="col">Azioni</th>
             </tr>
@@ -62,6 +64,7 @@
             @endforeach
         </tbody>
     </table>
+    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}">
     {{-- <script>
         function submitForm(id) {
             const form = document.getElementById(`form-edit-${id}`);
