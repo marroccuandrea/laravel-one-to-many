@@ -48,8 +48,10 @@
                         </form>
                     </td>
                     <td>{{ $project->type?->title }}</td>
-                    <td><img class="image-fluid w-25" src="{{ asset('storage/' . $project->image) }}"
-                            alt="{{ $project->title }}"></td>
+                    <td>
+                        <img class="image-fluid w-25" src="{{ asset('storage/' . $project->image) }}"
+                            alt="{{ $project->title }}">
+                    </td>
                     <td class="d-flex">
 
                         {{-- <button onclick="submitForm({{ $project->id }})" class="me-2 btn btn-warning"
